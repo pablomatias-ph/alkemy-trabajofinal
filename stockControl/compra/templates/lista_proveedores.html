@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listado de Proveedores</title>
+  </head>
+  <body>
+    <h1>Listado de Proveedores</h1>
+    <ul>
+      {% for proveedor in proveedores %}
+      <li>Nombre o Razon Social: {{ proveedor.nombre }}</li>
+      <li>Apellido: {{ proveedor.apellido }}</li>
+      <li>DNI: {{ proveedor.dni }}</li>
+      <p>------------------------------------</p>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
