@@ -1,15 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Agregar Proveedor</title>
-</head>
-<body>
-    <h1>Agregar Proveedor</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+{% extends "inicio.html" %}
+
+{% block title %}Agregar Proveedor{% endblock %}
+
+{% block content %}
+
+<body class="grid-fixed">
+    <main id="admin" class="container">
+        <section class="admin__list">
+            <div class="admin__header">
+                <h2>Agregar Proveedor</h2>
+            </div>
+        <form class="register__form" method="post">
+            <div class="form__box--grid">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+            <div class="form__submission">
+                <input class="form__btn btn btn--primary btn--large" type="submit" value="Guardar">
+            </div>
+       </form>
+       </section>
+    </main>
+{% endblock %}
 </body>
-</html>

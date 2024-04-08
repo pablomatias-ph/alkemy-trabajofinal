@@ -1,0 +1,20 @@
+{% load static %}
+
+<nav class="header navbar container">
+    <picture class="navbar__logo">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'img/stockControl_icono.png' %}" alt="Sistema de Gestion" />
+      </a>
+    </picture>
+    <ul class="navbar__menu">
+      <li class="navbar__item with-submenu">
+        <a class="navbar__link with-icon" href="{% url 'lista_productos' %}">Listado Productos</a>
+          </li>
+      <li class="navbar__item">
+        <a class="navbar__link" href="{% url 'lista_proveedores' %}">Listado Proveedores</a>
+      </li>
+      <li class="navbar__item">
+        <a class="navbar__link" href="../admin">Login Admin</a>
+      </li>
+    </ul>
+  </nav>

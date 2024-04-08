@@ -2,6 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Proveedor, Producto
 from .forms import ProveedorForm, ProductoForm
 
+def home(request):
+    return render(request, 'index.html')
+
+def inicio(request):
+    return render(request, 'inicio.html')
+
+def administrador(request):
+    return render(request, 'administrador.html')
+
 def lista_proveedores(request):
     proveedores = Proveedor.objects.all()
     return render(request, 'lista_proveedores.html', {'proveedores': proveedores})
@@ -51,3 +60,13 @@ def editar_producto(request, producto_id):
     else:
         form = ProductoForm(instance=producto)
     return render(request, 'editar_producto.html', {'form': form})
+
+def borrar_proveedor(request, proveedor_id):
+    proveedor = get_object_or_404(Proveedor, pk=proveedor_id)
+    proveedor.delete()
+    return redirect('lista_proveedores')
+
+def borrar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    producto.delete()
+    return redirect('lista_productos')

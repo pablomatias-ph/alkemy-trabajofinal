@@ -1,18 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Listado de Productos</title>
-  </head>
-  <body>
-    <h1>Listado de Productos</h1>
-    <ul>
-      {% for producto in productos %}
-      <li>Nombre producto:{{ producto.nombre }}</li>
-      <li>Precio: ${{ producto.precio }}</li>
-      <li>Stock: {{ producto.stock_actual }}</li>
-      <p>------------------------------------</p>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% extends "inicio.html" %}
+
+{% block title %}Listado de Productos{% endblock %}
+
+{% block content %}
+
+<body class="grid-fixed">
+  <main id="admin" class="container">
+    <section class="admin__list">
+      <div class="admin__header">
+        <h2>Listado de productos</h2>
+        <a href="{% url 'agregar_producto' %}"><input type="submit" value="Nuevo Producto"></a>
+      </div>
+      <div class="admin-table">
+        <header class="admin-table__header">
+          <h3>Nombre</h3>
+          <h3>Proveedor</h3>
+          <h3>Precio</h3>
+          <h3>Stock</h3>
+        </header>
+        {% for producto in productos %}
+        <article class="admin-table__row">
+          <p>{{ producto.nombre }}</p>
+          <p>{{ producto.proveedor}} </p>
+          <p>${{ producto.precio }}</p>
+          <p>{{ producto.stock_actual }}</p>
+          <a href="{% url 'editar_producto' producto.id %}"><input type="submit" value="Modificar"></a></li>
+          <a href="#" onclick="confirmarBorrado({{ producto.id }})"><input type="submit" value="Borrar"></a>
+        </article>
+        {% endfor %}          
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function confirmarBorrado(id) {
+        if (confirm("¿Estás seguro de que deseas borrar este producto?")) {
+            window.location.href = "borrar_producto/" + id;
+        }
+    }
+  </script>
+
+{% endblock %}
+</body>

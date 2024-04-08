@@ -1,0 +1,23 @@
+{% load static %}
+
+<footer class="footer">
+  <nav class="navbar container">
+    <ul class="navbar__item">
+      <li class="navbar__item">
+        <a class="navbar__link" href="">Listado Productos</a>
+      </li>
+      <li class="navbar__item">
+        <a class="navbar__link" href="">Listado Proveedores</a>
+      </li>
+      <li class="navbar__item">
+        <a class="navbar__link" href="">Login Admin</a>
+      </li>
+    </ul>
+    <picture>
+      <a href="{% url 'home' %}">
+        <img src="{% static 'img/stockControl_icono.png' %}" alt="StockControl" /> 
+      </a>
+    </picture>
+  </nav>
+  <p class="footer__copy">Todos los derechos reservados 2024 - StockControl</p>
+  </footer>

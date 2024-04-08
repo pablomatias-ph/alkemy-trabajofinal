@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block title %}Listado de Productos{% endblock %}
+
+{% block content %}
+
+{% include 'admin' %} 
+
+<body class="grid-fixed">
+  <main id="admin" class="container">
+    <section class="admin__list">
+      <div class="admin-table">
+        <header class="admin-table__header">
+          {% include 'admin' %} 
+          
+        </header>
+          
+      </div>
+    </section>
+  </main>
+
+{% endblock %}
+</body>

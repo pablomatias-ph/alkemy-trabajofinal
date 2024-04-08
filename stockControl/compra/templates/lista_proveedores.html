@@ -1,18 +1,45 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Listado de Proveedores</title>
-  </head>
-  <body>
-    <h1>Listado de Proveedores</h1>
-    <ul>
-      {% for proveedor in proveedores %}
-      <li>Nombre o Razon Social: {{ proveedor.nombre }}</li>
-      <li>Apellido: {{ proveedor.apellido }}</li>
-      <li>DNI: {{ proveedor.dni }}</li>
-      <p>------------------------------------</p>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+{% extends "inicio.html" %}
+
+{% block title %}Listado de proveedores{% endblock %}
+
+{% block content %}
+
+<body class="grid-fixed">
+  <main id="admin" class="container">
+      <section class="admin__list">
+        <div class="admin__header">
+          <h2>Listado de proveedores</h2>
+          <a href="{% url 'agregar_proveedor' %}"><input type="submit" value="Nuevo Proveedor"></a>
+        </div>
+        <div class="admin-table">
+          <header class="admin-table__header">
+            <h3>Nombre y apellido / Razon Social</h3>
+            <h3></h3>
+            <h3>DNI / CUIT</h3>
+            <h3></h3>
+            <h3></h3>
+          </header>
+          {% for proveedor in proveedores %}
+          <article class="admin-table__row">
+            <p>{{ proveedor.nombre }} {{ proveedor.apellido }}</p>
+            <p></p>
+            <p> {{ proveedor.dni }}</p>
+            <p></p>
+            <a href="{% url 'editar_proveedor' proveedor.id %}"><input type="submit" value="Modificar"></a></li>
+            <a href="#" onclick="confirmarBorrado({{ proveedor.id }})"><input type="submit" value="Borrar"></a>
+          </article>
+          {% endfor %}          
+        </div>
+      </section>
+  </main>
+
+  <script>
+      function confirmarBorrado(id) {
+          if (confirm("¿Estás seguro de que deseas borrar este producto?")) {
+              window.location.href = "borrar_producto/" + id;
+          }
+      }
+  </script>
+
+{% endblock %}
+</body>
